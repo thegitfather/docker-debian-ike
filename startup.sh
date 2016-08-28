@@ -7,11 +7,11 @@ fi
 
 BASENAME=`basename "$0"`
 
-SITE=$1
+CONFIG=$1
 USER=$2
 PW=$3
 TARGET=$4
-PORTFORWARD=$5
+PORT=$5
 
 IKED_PID=$(pgrep iked)
 
@@ -40,8 +40,8 @@ check_vpn () {
 		killall -9 ikec &>/dev/null
 		killall -9 socat &>/dev/null
 
-		socat TCP4-LISTEN:"${PORTFORWARD}",fork TCP4:"${TARGET}" &
-		ikec -r "${SITE}" -u "${USER}" -p "${PW}" -a &
+		socat TCP4-LISTEN:"${PORT}",fork TCP4:"${TARGET}" &
+		ikec -r "${CONFIG}" -u "${USER}" -p "${PW}" -a &
 		sleep 10
 	fi
 	check_vpn
