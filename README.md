@@ -10,7 +10,7 @@ Based on Debian jessie.
 ### Create and work with container
 
 ```shell
-$ docker run -ti -p [port]:[port] --privileged --name ike debian-ikec [CONFIG] [USER] [PW] [TARGET] [PORT]
+$ docker run -ti -p [port]:[port] --privileged --name ike debian-ike:0.1 [CONFIG] [USER] [PW] [TARGET] [PORT]
 ```
 
 - `[port]:[port]` docker port forward container <-> host
