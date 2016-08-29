@@ -3,7 +3,7 @@
 BASENAME=`basename "$0"`
 
 if [ "$#" -ne 5 ]; then
-    echo -e "usage: \$ ./${BASENAME} \"[CONFIG]\" [USER] [PW] [TARGET] [PORT]\n"
+	echo -e "usage: \$ ./${BASENAME} \"[CONFIG]\" [USER] [PW] [TARGET] [PORT]\n"
 	exit 1
 fi
 
