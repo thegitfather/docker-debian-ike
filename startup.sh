@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 if [ "$#" -ne 5 ]; then
-    echo -e "usage:\n\$ docker run -ti -p [port]:[port] --privileged --name ike debian-ikec [config] [user] [PW] [TARGET] [PORT]"
+    echo -e "usage:\n\$ docker run -ti -p [PORT]:[PORT] --privileged --name ike debian-ike:0.1 \"[CONFIG]\" [USER] [PW] [TARGET] [PORT]"
 		exit 1
 fi
 
@@ -40,8 +40,8 @@ check_vpn () {
 		killall -9 ikec &>/dev/null
 		killall -9 socat &>/dev/null
 
-		socat TCP4-LISTEN:"${PORT}",fork TCP4:"${TARGET}" &
-		ikec -r "${CONFIG}" -u "${USER}" -p "${PW}" -a &
+		socat TCP4-LISTEN:${PORT},fork TCP4:${TARGET} &
+		ikec -r "${CONFIG}" -u ${USER} -p ${PW} -a &
 		sleep 10
 	fi
 	check_vpn

@@ -7,7 +7,8 @@ RUN apt-get update && apt-get install -y \
     socat \
     psmisc
 
-COPY sites /root/.ike/sites
+WORKDIR /root
 COPY startup.sh /root
+COPY sites /root/.ike/sites
 
 ENTRYPOINT ["/root/startup.sh"]

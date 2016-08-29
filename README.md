@@ -10,13 +10,13 @@ Based on Debian jessie.
 ### Create and work with container
 
 ```shell
-$ docker run -ti -p [port]:[port] --privileged --name ike debian-ike:0.1 [CONFIG] [USER] [PW] [TARGET] [PORT]
+$ docker run -ti -p [PORT]:[PORT] --privileged --name ike debian-ike:0.1 "[CONFIG]" [USER] [PW] [TARGET] [PORT]
 ```
 
-- `[port]:[port]` docker port forward container <-> host
-- `CONFIG` is the filename in your sites folder
-- `TARGET` is `ip:port` which will be used to setup a TCP4 port forward with `socat`
-- last `PORT` specifies socat's port to open and map to target   
+- `[PORT]`:`[PORT]` docker port forward container <-> host
+- `[CONFIG]` is the filename in your sites folder
+- `[TARGET]` is `ip:port` which will be used to setup a TCP4 port forward with `socat`
+- last `[PORT]` specifies socat's port to open and map to target
 
 After first run you can:
 
