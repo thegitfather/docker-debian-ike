@@ -5,10 +5,13 @@ RUN apt-get update && apt-get install -y \
     ike \
     net-tools \
     socat \
-    psmisc
+    psmisc \
+    git \
+    bash-completion
 
 WORKDIR /root
 COPY startup.sh /root
 COPY sites /root/.ike/sites
 
+#ENTRYPOINT ["/root/startup-socat.sh"]
 ENTRYPOINT ["/root/startup.sh"]
