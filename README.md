@@ -5,12 +5,36 @@ Based on Debian jessie.
 ### Install
 
 - copy your ikec config file (`%HOME/.ike/sites`) to `sites` folder
-- build image with `docker build -t debian-ike:0.1 .`
+- build image with `./build.sh` or:
+
+```shell
+$ docker build -t debian-ike:0.1 .
+```
 
 ### Create and work with container
 
+Use `run.sh`, eg.:
+
 ```shell
-$ docker run -ti -p [PORT]:[PORT] --privileged --name ike debian-ike:0.1 "[CONFIG]" [USER] [PW] [TARGET] [PORT]
+$ ./run.sh "mycompany.vpn" myusername mypassword
+```
+
+or:
+
+```shell
+$ docker run -v $(pwd)/volume:/mnt/volume --privileged --name ike debian-ike:0.1 "[CONFIG_NAME.vpn]" [USER] [PW]
+```
+
+And attach:
+
+```shell
+$ docker exec -it ike bash
+```
+
+With `socat`:
+
+```shell
+$ docker run -p [PORT]:[PORT] --privileged --name ike debian-ike:0.1 "[CONFIG_NAME.vpn]" [USER] [PW] [TARGET] [PORT]
 ```
 
 - `[PORT]`:`[PORT]` docker port forward container <-> host
