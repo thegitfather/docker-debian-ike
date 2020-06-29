@@ -13,7 +13,7 @@ PW=$3
 TARGET=$4
 PORT=$5
 
-docker run -ti -p ${PORT}:${PORT} --privileged --rm debian-ike:0.1 ${CONFIG} ${USER} ${PW} ${TARGET} ${PORT}
-#docker run -d -p ${PORT}:${PORT} --privileged --name ike debian-ike:0.1 ${CONFIG} ${USER} ${PW} ${TARGET} ${PORT}
+#docker run -ti -p ${PORT}:${PORT} --privileged --rm debian-ike-socat:0.1 ${CONFIG} ${USER} ${PW} ${TARGET} ${PORT}
+docker run -d -p ${PORT}:${PORT} --privileged --name ike debian-ike-socat:0.1 ${CONFIG} ${USER} ${PW} ${TARGET} ${PORT}
 
 exit 0
