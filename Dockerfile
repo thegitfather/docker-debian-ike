@@ -7,7 +7,8 @@ RUN apt-get update && apt-get install -y \
     socat \
     psmisc \
     git \
-    bash-completion
+    bash-completion \
+    nano
 
 WORKDIR /root
 COPY startup.sh /root

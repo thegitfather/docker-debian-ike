@@ -17,6 +17,15 @@ if [ -z "${IKED_PID}" ]; then
 	iked &
 fi
 
+# command -v /usr/bin/nano >/dev/null 2>&1 || { echo "please make sure nano is installed. aborting..." >&2; exit 1; }
+
+# set nano as git editor
+if [ -f /usr/bin/nano ]; then
+  if [ -f /usr/bin/git ]; then
+    git config --global core.editor "nano"
+  fi
+fi
+
 function finish {
   echo "Detected SIGTERM, shuting down..."
 	killall -9 ikec &>/dev/null
